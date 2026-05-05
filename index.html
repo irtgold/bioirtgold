@@ -296,6 +296,75 @@
             transform: translateY(0);
         }
 
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #ffffff 0%, #fff8e8 100%);
+            border: 1px solid rgba(212, 169, 96, 0.35);
+            border-radius: 20px;
+            padding: 22px 24px;
+            margin: 10px 0 20px;
+            box-shadow: 0 8px 25px rgba(139, 110, 70, 0.15);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 14px;
+            color: #8b6e3c;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed rgba(212, 169, 96, 0.4);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff8e8 0%, #f5e9d0 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(212, 169, 96, 0.25);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #3a2e1f;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 165, 0, 0.25);
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1a1410;
+        }
+
+        .contact-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-label {
+            font-size: 13px;
+            color: #8b6e3c;
+            font-weight: 500;
+        }
+
+        .contact-item:hover .contact-label {
+            color: #2d2418;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
         /* Footer / Social */
         .footer-text {
             text-align: center;
@@ -434,6 +503,25 @@
                     </div>
                 </div>
                 <a href="https://qr-official.line.me/gs/M_852ghlpv_BW.png?oat__id=6112336&oat_content=qr" class="link-button" target="_blank">🎓 จองคอร์สส่วนตัว</a>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <div class="contact-title">📞 ติดต่อแอดมิน</div>
+                <a href="tel:0952309127" class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div>
+                        <div class="contact-label">โทรศัพท์</div>
+                        <div class="contact-value">095-230-9127</div>
+                    </div>
+                </a>
+                <a href="https://line.me/R/ti/p/@852ghlpv" class="contact-item" target="_blank">
+                    <span class="contact-icon">💬</span>
+                    <div>
+                        <div class="contact-label">LINE Official</div>
+                        <div class="contact-value">@852ghlpv</div>
+                    </div>
+                </a>
             </div>
 
             <!-- Footer -->
