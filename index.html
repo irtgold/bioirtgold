@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IRT GOLD แบงค์-ศุภวัสส์</title>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         /* ==================== CSS STYLES ==================== */
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -15,11 +16,28 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #e8dcc4 0%, #d4c4a8 100%);
+            background: linear-gradient(135deg, #f5e9d0 0%, #e8dcc4 50%, #d4c4a8 100%);
             margin: 0;
             padding: 0;
+            color: #3a2e1f;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 169, 96, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
@@ -27,7 +45,9 @@
             width: 100%;
             min-height: 100vh;
             margin: 0 auto;
-            padding: 0 16px;
+            padding: 0 16px 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-card {
@@ -36,38 +56,54 @@
             position: relative;
         }
 
-        /* Profile Header with Image Background */
+        /* Profile Header - transparent (no background image) */
         .profile-header {
-            background: 
-                linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%),
-                url('https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/Profile/bnirtgold1.png') no-repeat center center;
-            background-size: cover;
-            padding: 50px 30px 30px;
+            background: transparent;
+            padding: 50px 30px 35px;
             text-align: center;
             position: relative;
-            min-height: 250px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 0 -16px 20px;
+            margin: 0 -16px 25px;
+        }
+
+        .profile-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4a960, transparent);
         }
 
         .profile-image {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             background: linear-gradient(135deg, #2d2d44 0%, #1f1f2e 100%);
-            margin: 0 auto 15px;
-            border: 4px solid rgba(255, 255, 255, 0.9);
+            margin: 0 auto 18px;
+            border: 3px solid #FFD700;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 42px;
             color: #FFD700;
             font-weight: bold;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow:
+                0 0 30px rgba(255, 215, 0, 0.4),
+                0 10px 25px rgba(139, 110, 70, 0.3);
             overflow: hidden;
+            position: relative;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.35), 0 10px 25px rgba(139, 110, 70, 0.3); }
+            to { box-shadow: 0 0 40px rgba(255, 215, 0, 0.7), 0 10px 25px rgba(139, 110, 70, 0.3); }
         }
 
         .profile-image img {
@@ -77,112 +113,258 @@
         }
 
         .profile-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            color: white;
-            margin-bottom: 6px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            color: #3a2e1f;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .profile-name .gold-text {
+            background: linear-gradient(135deg, #d4a017 0%, #FFA500 50%, #d4a017 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
         }
 
         .profile-title {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 500;
-        }
-
-        /* Main Button */
-        .main-button {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #2d2d44;
-            padding: 16px 30px;
-            border-radius: 25px;
-            margin: 25px 0 15px;
-            text-align: center;
+            font-size: 12px;
+            color: #6b5535;
             font-weight: 600;
-            font-size: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
-            text-decoration: none;
-            display: block;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border: 1px solid rgba(212, 169, 96, 0.5);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            backdrop-filter: blur(4px);
         }
 
-        .main-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.5);
-            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
-        }
-
-        .main-button:last-child {
+        /* Section Card Wrapper */
+        .section-wrapper {
             margin-bottom: 30px;
+            animation: fadeInUp 0.6s ease-out;
         }
 
-        /* Section Title */
-        .section-title {
-            text-align: center;
-            color: #d4a960;
-            font-size: 13px;
-            font-weight: 600;
-            margin: 20px 0 15px;
-            letter-spacing: 0.5px;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Content Box with Image */
         .content-box {
-            background: white;
-            margin: 0 0 20px;
+            background: #ffffff;
+            margin: 0;
             padding: 0;
-            border-radius: 16px;
+            border-radius: 20px 20px 0 0;
             overflow: hidden;
-            min-height: 220px;
             position: relative;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 25px rgba(139, 110, 70, 0.18);
+            border: 1px solid rgba(212, 169, 96, 0.25);
+            border-bottom: none;
         }
 
         .content-image {
             width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, #e8dcc4 0%, #d4c4a8 100%);
+            min-height: 220px;
+            background: linear-gradient(135deg, #f5e9d0 0%, #e8dcc4 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 48px;
             color: #b8964f;
             position: relative;
+            overflow: hidden;
         }
 
         .content-image img {
             width: 100%;
             height: 100%;
+            min-height: 220px;
             object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .content-box:hover .content-image img {
+            transform: scale(1.03);
+        }
+
+        /* Info Block under image */
+        .info-block {
+            background: #ffffff;
+            padding: 18px 24px;
+            border-top: 1px solid rgba(212, 169, 96, 0.2);
+        }
+
+        .info-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #8b6e3c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: #4a3d2a;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .info-list li::before {
+            content: '✓';
+            color: #d4a960;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1a1410;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-left: 4px;
+        }
+
+        .price-tag.free {
+            background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);
+            color: white;
         }
 
         /* Link Button */
         .link-button {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #2d2d44;
-            padding: 16px 30px;
-            border-radius: 25px;
-            margin: 0 0 20px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            color: #2d2418;
+            padding: 18px 30px;
+            border-radius: 0 0 20px 20px;
+            margin: 0;
             text-align: center;
-            font-weight: 600;
-            font-size: 15px;
+            font-weight: 700;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+            box-shadow: 0 8px 22px rgba(255, 165, 0, 0.35);
             text-decoration: none;
             display: block;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .link-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .link-button:hover::before {
+            left: 100%;
         }
 
         .link-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.5);
+            box-shadow: 0 12px 30px rgba(255, 165, 0, 0.5);
             background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+        }
+
+        .link-button:active {
+            transform: translateY(0);
+        }
+
+        /* Footer / Social */
+        .footer-text {
+            text-align: center;
+            color: #8b6e3c;
+            font-size: 12px;
+            margin-top: 30px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Badge */
+        .badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.gold {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1a1410;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .badge.green {
+            background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+        }
+
+        .badge.vip {
+            background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
         }
 
         @media (max-width: 480px) {
             .profile-name {
                 font-size: 22px;
+            }
+            .profile-title {
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+            .info-title {
+                font-size: 15px;
+            }
+            .info-list li {
+                font-size: 13px;
+            }
+            .link-button {
+                font-size: 15px;
+                padding: 16px 24px;
+            }
+            .info-block {
+                padding: 16px 18px;
             }
         }
     </style>
@@ -195,39 +377,72 @@
                 <div class="profile-image">
                     <img src="https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/Profile/irtgoldpro.png" alt="IRT GOLD">
                 </div>
-                <div class="profile-name">แบงค์ ศุภวัสส์ IRT GOLD</div>
-                <div class="profile-title">IRT GOLD PROGRAM | Signal | Private Course</div>
+                <div class="profile-name">แบงค์ ศุภวัสส์ <span class="gold-text">IRT GOLD</span></div>
+                <div class="profile-title">Signal • Signal Free • Private Course</div>
             </div>
 
-            <!-- Content Box 1 -->
-            <div class="content-box">
-                <div class="content-image">
-                    <img src="https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/bnirtgold/bnirtgold1.png" alt="IRT GOLD Program">
+            <!-- ============ SECTION 1: SIGNAL 3 เดือน 2,390 ============ -->
+            <div class="section-wrapper">
+                <div class="content-box">
+                    <span class="badge gold">แนะนำ</span>
+                    <div class="content-image">
+                        <img src="https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/bnirtgold/bnirtgold1.png" alt="Signal 3 เดือน">
+                    </div>
+                    <div class="info-block">
+                        <div class="info-title">📲 ห้อง Signal <span class="price-tag">3 เดือน 2,390.-</span></div>
+                        <ul class="info-list">
+                            <li>ห้องส่งสัญญาณเทรดทองคำ ระบบ IRT มืออาชีพ</li>
+                            <li>เหมาะสำหรับมือใหม่ และคนที่มีเวลาน้อย</li>
+                            <li>หมดปัญหาเรื่องเวลา เทรดตามเซียนได้ทุกวัน</li>
+                            <li>รองรับทุกโบรกเกอร์ ไม่จำกัดการใช้งาน</li>
+                        </ul>
+                    </div>
                 </div>
+                <a href="https://qr-official.line.me/gs/M_852ghlpv_BW.png?oat__id=6112336&oat_content=qr" class="link-button" target="_blank">📲 สมัคร Signal 3 เดือน</a>
             </div>
 
-            <!-- Link Button -->
-            <a href="https://qr-official.line.me/gs/M_852ghlpv_BW.png?oat__id=6112336&oat_content=qr" class="main-button" target="_blank">📚 IRT GOLD PROGRAM</a>
-
-            <!-- Content Box 2 -->
-            <div class="content-box">
-                <div class="content-image">
-                    <img src="https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/bnirtgold/bnirtgold2.png" alt="Signal M5">
+            <!-- ============ SECTION 2: SIGNAL FREE ============ -->
+            <div class="section-wrapper">
+                <div class="content-box">
+                    <span class="badge green">ฟรี!</span>
+                    <div class="content-image">
+                        <img src="https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/bnirtgold/bnirtgold2.png" alt="Signal เข้าฟรี">
+                    </div>
+                    <div class="info-block">
+                        <div class="info-title">🎁 ห้อง Signal <span class="price-tag free">เข้าฟรี!</span></div>
+                        <ul class="info-list">
+                            <li>เพียงเติมพอร์ต TP Trade <span class="price-tag">$300 ขึ้นไป</span></li>
+                            <li>รับสัญญาณเทรดทองคำฟรีทุกวัน</li>
+                            <li>ระบบเดียวกับห้อง Signal รายเดือน</li>
+                            <li>ประหยัดค่าสมาชิก คุ้มสุด ๆ</li>
+                        </ul>
+                    </div>
                 </div>
+                <a href="https://qr-official.line.me/gs/M_852ghlpv_BW.png?oat__id=6112336&oat_content=qr" class="link-button" target="_blank">🎁 รับสิทธิ์เข้าฟรี TP $300</a>
             </div>
 
-            <!-- Link Button -->
-            <a href="https://qr-official.line.me/gs/M_852ghlpv_BW.png?oat__id=6112336&oat_content=qr" class="link-button" target="_blank">📲 Signal M5</a>
-
-            <!-- Content Box 3 -->
-            <div class="content-box">
-                <div class="content-image">
-                    <img src="https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/bnirtgold/bnirtgold3.png" alt="Private Course">
+            <!-- ============ SECTION 3: PRIVATE COURSE ============ -->
+            <div class="section-wrapper">
+                <div class="content-box">
+                    <span class="badge vip">VIP</span>
+                    <div class="content-image">
+                        <img src="https://raw.githubusercontent.com/irtgold/bioirtgold/main/bioirtgold/bnirtgold/bnirtgold3.png" alt="Private Course">
+                    </div>
+                    <div class="info-block">
+                        <div class="info-title">🎓 Private Course <span class="price-tag">เรียนตัวต่อตัว</span></div>
+                        <ul class="info-list">
+                            <li>คอร์สเรียนส่วนตัว แบบตัวต่อตัวกับโค้ชแบงค์</li>
+                            <li>ปรับแผนเทรดให้เหมาะกับคุณโดยเฉพาะ</li>
+                            <li>สอนระบบ IRT ที่ใช้เทรดเป็นอาชีพได้จริง</li>
+                            <li>รับจำนวนจำกัด เฉพาะรอบนี้เท่านั้น!</li>
+                        </ul>
+                    </div>
                 </div>
+                <a href="https://qr-official.line.me/gs/M_852ghlpv_BW.png?oat__id=6112336&oat_content=qr" class="link-button" target="_blank">🎓 จองคอร์สส่วนตัว</a>
             </div>
 
-            <!-- Link Button -->
-            <a href="https://qr-official.line.me/gs/M_852ghlpv_BW.png?oat__id=6112336&oat_content=qr" class="main-button" target="_blank">🎓 Private Course</a>
+            <!-- Footer -->
+            <div class="footer-text">© IRT GOLD • TRADE LIKE A PRO</div>
         </div>
     </div>
 </body>
